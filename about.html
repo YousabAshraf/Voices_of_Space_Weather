@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - Voices of Space Weather</title>
+  <style>
+    :root {
+      --space-blue: #0b0f2e;
+      --space-purple: #1a1f4b;
+      --accent-orange: #ff7b25;
+      --accent-yellow: #ffcc00;
+      --accent-blue: #00bcd4;
+      --accent-pink: #e91e63;
+      --accent-green: #4caf50;
+      --text-light: #ffffff;
+      --text-gray: #b0b0b0;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: "Poppins", "Segoe UI", sans-serif;
+      text-align: center;
+      color: var(--text-light);
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+    
+    /* خلفية الفيديو */
+    .video-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -3;
+      overflow: hidden;
+    }
+    
+    .video-background video {
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+    }
+    
+    /* طبقة تظليل فوق الفيديو */
+    .video-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(11, 15, 46, 0.7);
+      z-index: -2;
+    }
+    
+    /* تأثير النجوم في الخلفية */
+    .stars-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+    
+    .star {
+      position: absolute;
+      background-color: white;
+      border-radius: 50%;
+    }
+    
+    /* أنواع النجوم المختلفة */
+    .star.small {
+      width: 1px;
+      height: 1px;
+      animation: twinkle-small 4s infinite;
+    }
+    
+    .star.medium {
+      width: 2px;
+      height: 2px;
+      animation: twinkle-medium 5s infinite;
+    }
+    
+    .star.large {
+      width: 3px;
+      height: 3px;
+      animation: twinkle-large 6s infinite;
+    }
+    
+    .star.xlarge {
+      width: 4px;
+      height: 4px;
+      animation: twinkle-xlarge 7s infinite;
+    }
+    
+    /* نجوم متحركة (شهب) */
+    .shooting-star {
+      position: absolute;
+      width: 100px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, white);
+      transform: rotate(-45deg);
+      animation: shooting 10s infinite;
+      opacity: 0;
+    }
+    
+    @keyframes twinkle-small {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 1; }
+    }
+    
+    @keyframes twinkle-medium {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+    
+    @keyframes twinkle-large {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
+    }
+    
+    @keyframes twinkle-xlarge {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+    
+    @keyframes shooting {
+      0% {
+        opacity: 0;
+        transform: translateX(0) translateY(0) rotate(-45deg);
+      }
+      5% {
+        opacity: 1;
+      }
+      10% {
+        opacity: 0;
+        transform: translateX(100px) translateY(100px) rotate(-45deg);
+      }
+      100% {
+        opacity: 0;
+        transform: translateX(100px) translateY(100px) rotate(-45deg);
+      }
+    }
+    
+    /* الشعارات */
+    .logo {
+      width: 170px;
+      position: fixed;
+      filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+      z-index: 10;
+    }
+    .logo.left { left: 20px; top: 15px;}
+    .logo.right { right: 20px;top: 25px; }
+    
+    /* شريط التنقل */
+    nav {
+      margin-top: 120px;
+      padding: 0 20px;
+      z-index: 10;
+      position: relative;
+    }
+    nav a {
+      display: inline-block;
+      margin: 0 15px;
+      padding: 12px 35px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 18px;
+      border-radius: 30px;
+      background: rgba(255, 123, 37, 0.8);
+      color: white;
+      box-shadow: 0 4px 15px rgba(255, 123, 37, 0.4);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    nav a::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+    
+    nav a:hover {
+      background: rgba(255, 123, 37, 1);
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(255, 123, 37, 0.6);
+    }
+    
+    nav a:hover::before {
+      left: 100%;
+    }
+    
+    /* المحتوى */
+    main {
+      margin-top: 60px;
+      padding: 20px;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      z-index: 5;
+    }
+    
+    h1 {
+      color: var(--accent-yellow);
+      font-size: 3em;
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+      position: relative;
+      display: inline-block;
+    }
+    
+    h1::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 10%;
+      width: 80%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--accent-yellow), transparent);
+    }
+    
+    p.subtitle {
+      font-size: 1.3em;
+      color: var(--text-light);
+      margin-bottom: 40px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    }
+    
+    /* كروت الفريق */
+    .team {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 30px;
+      justify-items: center;
+      margin-top: 40px;
+    }
+    
+    .member {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 25px;
+      padding: 25px 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      transition: all 0.4s ease;
+      width: 100%;
+      max-width: 280px;
+      border: 2px solid;
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .member::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      transform: rotate(30deg);
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+    
+    .member:hover::before {
+      opacity: 1;
+    }
+    
+    .member:nth-child(1) { 
+      border-color: var(--accent-yellow); 
+      background: linear-gradient(135deg, rgba(255, 204, 0, 0.2), rgba(255, 204, 0, 0.1));
+    }
+    .member:nth-child(2) { 
+      border-color: var(--accent-blue); 
+      background: linear-gradient(135deg, rgba(0, 188, 212, 0.2), rgba(0, 188, 212, 0.1));
+    }
+    .member:nth-child(3) { 
+      border-color: var(--accent-pink); 
+      background: linear-gradient(135deg, rgba(233, 30, 99, 0.2), rgba(233, 30, 99, 0.1));
+    }
+    .member:nth-child(4) { 
+      border-color: var(--accent-green); 
+      background: linear-gradient(135deg, rgba(76, 175, 80, 0.2), rgba(76, 175, 80, 0.1));
+    }
+    
+    .member:hover {
+      transform: translateY(-15px) scale(1.03);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    }
+    
+    .member-img-container {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      margin: 0 auto 20px;
+    }
+    
+    .member-img-container::before {
+      content: "";
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      border-radius: 50%;
+      z-index: -1;
+      opacity: 0.7;
+      filter: blur(10px);
+    }
+    
+    .member:nth-child(1) .member-img-container::before { background: var(--accent-yellow); }
+    .member:nth-child(2) .member-img-container::before { background: var(--accent-blue); }
+    .member:nth-child(3) .member-img-container::before { background: var(--accent-pink); }
+    .member:nth-child(4) .member-img-container::before { background: var(--accent-green); }
+    
+    .member img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 60%;
+      border: 4px solid rgba(255, 255, 255, 0.8);
+      transition: all 0.3s ease;
+    }
+    
+    .member:hover img {
+      border-width: 2px;
+      transform: scale(1.05);
+    }
+    
+    .member h3 {
+      margin: 0;
+      font-size: 1.5em;
+      color: var(--text-light);
+      margin-bottom: 10px;
+      text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+    }
+    
+    .member p {
+      margin-top: 8px;
+      font-size: 1em;
+      color: var(--text-light);
+      line-height: 1.5;
+      text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+    }
+    
+    /* التجاوب مع الشاشات المختلفة */
+    @media (max-width: 768px) {
+      .logo {
+        width: 100px;
+      }
+      
+      nav {
+        margin-top: 80px;
+      }
+      
+      nav a {
+        display: block;
+        margin: 10px auto;
+        width: 200px;
+      }
+      
+      h1 {
+        font-size: 2.2em;
+      }
+      
+      .team {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- خلفية الفيديو -->
+  <div class="video-background">
+    <video autoplay muted loop playsinline>
+      <source src="assets/background.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  
+  <!-- طبقة تظليل فوق الفيديو -->
+  <div class="video-overlay"></div>
+  
+  <!-- النجوم في الخلفية -->
+  <div class="stars-container" id="starsContainer"></div>
+  
+  <img src="assets/echoes_of_space.png" alt="Logo" class="logo left">
+  <img src="assets/nasa.png" alt="Logo" class="logo right">
+
+  <nav>
+    <a href="home.html">Home</a>
+    <a href="about.html">About</a>
+  </nav>
+
+  <main>
+    <h1>Meet Our Team 🌟</h1>
+    <p class="subtitle">Join us on an exciting journey to explore space and space weather 🚀✨.
+      <br>Through our project for the NASA Space Apps Challenge, you’ll discover how science, teamwork, and innovation solve cosmic challenges — and learn how these stories connect to our everyday lives.<br></p>
+
+    <section class="team">
+      <div class="member">
+        <div class="member-img-container">
+          <img src="assets/member1.jpg" alt="Yousab">
+        </div>
+        <h3>Youssef</h3>
+      </div>
+      <div class="member">
+        <div class="member-img-container">
+          <img src="assets/member2.jpg" alt="Omar">
+        </div>
+        <h3>Yousab</h3>
+      </div>
+      <div class="member">
+        <div class="member-img-container">
+          <img src="assets/member3.jpg" alt="Sarah">
+        </div>
+        <h3>Gaber</h3>
+      
+      </div>
+      <div class="member">
+        <div class="member-img-container">
+          <img src="assets/member4.jpg" alt="Mariam">
+        </div>
+        <h3>Fares</h3>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // إضافة تأثير النجوم العشوائية في الخلفية
+    document.addEventListener('DOMContentLoaded', function() {
+      const starsContainer = document.getElementById('starsContainer');
+      const starCount = 300;
+      
+      // إضافة النجوم الثابتة
+      for (let i = 0; i < starCount; i++) {
+        const star = document.createElement('div');
+        
+        // أنواع مختلفة من النجوم
+        const starTypes = ['small', 'medium', 'large', 'xlarge'];
+        const randomType = starTypes[Math.floor(Math.random() * starTypes.length)];
+        star.classList.add('star', randomType);
+        
+        // موقع عشوائي
+        star.style.left = `${Math.random() * 100}vw`;
+        star.style.top = `${Math.random() * 100}vh`;
+        
+        // تأخير عشوائي للوميض
+        star.style.animationDelay = `${Math.random() * 7}s`;
+        
+        starsContainer.appendChild(star);
+      }
+      
+      // إضافة الشهب
+      const shootingStarCount = 5;
+      for (let i = 0; i < shootingStarCount; i++) {
+        const shootingStar = document.createElement('div');
+        shootingStar.classList.add('shooting-star');
+        
+        // موقع عشوائي
+        shootingStar.style.left = `${Math.random() * 100}vw`;
+        shootingStar.style.top = `${Math.random() * 100}vh`;
+        
+        // تأخير عشوائي للحركة
+        shootingStar.style.animationDelay = `${Math.random() * 10}s`;
+        
+        starsContainer.appendChild(shootingStar);
+      }
+      
+      // إضافة بعض النجوم الكبيرة اللامعة
+      const brightStarsCount = 15;
+      for (let i = 0; i < brightStarsCount; i++) {
+        const brightStar = document.createElement('div');
+        brightStar.classList.add('star', 'xlarge');
+        
+        // جعلها أكثر لمعاناً
+        brightStar.style.boxShadow = '0 0 10px 2px white';
+        
+        // موقع عشوائي
+        brightStar.style.left = `${Math.random() * 100}vw`;
+        brightStar.style.top = `${Math.random() * 100}vh`;
+        
+        // تأخير عشوائي للوميض
+        brightStar.style.animationDelay = `${Math.random() * 5}s`;
+        
+        starsContainer.appendChild(brightStar);
+      }
+    });
+  </script>
+</body>
+</html>

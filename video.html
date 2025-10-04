@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Video - Voices of Space Weather</title>
+
+  <style>
+    :root {
+      --space-blue: #0b0f2e;
+      --space-purple: #1a1f4b;
+      --accent-orange: #ff7b25;
+      --accent-yellow: #ffcc00;
+      --accent-blue: #2196f3;
+      --text-light: #ffffff;
+      --text-gray: #b0b0b0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Comic Sans MS", "Poppins", sans-serif;
+      background: linear-gradient(135deg, var(--space-blue), var(--space-purple));
+      color: var(--text-light);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* النجوم */
+    .stars-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .star {
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+    }
+
+    .star.small {
+      width: 1px;
+      height: 1px;
+      animation: twinkle 4s infinite;
+    }
+
+    .star.medium {
+      width: 2px;
+      height: 2px;
+      animation: twinkle 5s infinite;
+    }
+
+    .star.large {
+      width: 3px;
+      height: 3px;
+      animation: twinkle 6s infinite;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: .3; }
+      50% { opacity: 1; }
+    }
+
+    /* اللوجو */
+    .logo {
+      width: 150px;
+      position: fixed;
+      filter: drop-shadow(0 0 8px rgba(255, 255, 255, .5));
+      z-index: 100;
+    }
+
+      .logo.left { left: 20px; top: 15px;}
+      .logo.right { right: 20px;top: 25px; }
+
+    /* الكونتينر */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 140px 20px 40px;
+      position: relative;
+      z-index: 10;
+    }
+
+    h1 {
+      text-align: center;
+      color: var(--accent-yellow);
+      font-size: 2.5em;
+      margin-bottom: 15px;
+      text-shadow: 0 0 10px rgba(255, 204, 0, .5);
+    }
+
+    .video-description {
+      text-align: center;
+      font-size: 1.2em;
+      color: var(--text-gray);
+      margin: 0 auto 40px;
+      max-width: 700px;
+    }
+
+    /* الفيديو */
+    .video-wrapper {
+      background: rgba(255, 255, 255, .1);
+      border-radius: 25px;
+      padding: 30px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .3);
+      border: 2px solid var(--accent-blue);
+      margin-bottom: 30px;
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 15px;
+      background: #000;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* معلومات الفيديو */
+    .info-section {
+      background: rgba(255, 255, 255, .1);
+      border-radius: 25px;
+      padding: 30px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .3);
+      border: 2px solid var(--accent-yellow);
+      margin-top: 30px;
+    }
+
+    .info-section h2 {
+      text-align: center;
+      color: var(--accent-yellow);
+      margin-bottom: 15px;
+      font-size: 1.8em;
+    }
+
+    .info-section p {
+      text-align: center;
+      color: var(--text-light);
+      line-height: 1.8;
+      font-size: 1.1em;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* الأزرار */
+    .quiz-btn-container {
+      display: flex;
+      justify-content: center; /* الزرين في النص */
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .quiz-btn {
+      display: inline-block;
+      padding: 15px 40px;
+      background: var(--accent-orange);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 1.1em;
+      box-shadow: 0 4px 15px rgba(255, 123, 37, .4);
+      transition: .3s;
+    }
+
+    .quiz-btn:hover {
+      background: #e65c00;
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(255, 123, 37, .6);
+    }
+  </style>
+</head>
+<body>
+  <!-- خلفية النجوم -->
+  <div class="stars-container" id="starsContainer"></div>
+
+  <!-- اللوجوهات -->
+  <img src="assets/echoes_of_space.png" class="logo left" />
+  <img src="assets/nasa.png" class="logo right" />
+
+  <!-- المحتوى -->
+  <div class="container">
+    <h1 id="videoTitle">🎬 Video Title Here</h1>
+    <p class="video-description" id="videoDesc">
+      Watch this amazing video and learn something new!
+    </p>
+
+    <!-- الفيديو -->
+    <div class="video-wrapper">
+      <div class="video-container">
+        <iframe id="videoFrame" src="" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <!-- معلومات الفيديو -->
+    <div class="info-section">
+      <h2>📚 What You'll Learn</h2>
+      <p id="videoInfo">
+        In this video, you'll discover amazing facts about space! 🚀✨
+      </p>
+    </div>
+
+    <!-- الأزرار جنب بعض -->
+    <div class="quiz-btn-container">
+      <a href="home.html" class="quiz-btn">← Back to Home</a>
+      <a id="quizBtn" href="quiz.html" class="quiz-btn">Take the Quiz! 🎯</a>
+    </div>
+  </div>
+
+  <script>
+    // النجوم
+    document.addEventListener("DOMContentLoaded", () => {
+      const starsContainer = document.getElementById("starsContainer");
+      for (let i = 0; i < 200; i++) {
+        const star = document.createElement("div");
+        star.classList.add("star", ["small","medium","large"][Math.floor(Math.random()*3)]);
+        star.style.left = `${Math.random() * 100}vw`;
+        star.style.top = `${Math.random() * 100}vh`;
+        star.style.animationDelay = `${Math.random() * 4}s`;
+        starsContainer.appendChild(star);
+      }
+
+      const videos = {
+  "1": {
+    title: "🌌 Kareem's story",
+    desc: "See how space weather impacts agriculture.",
+    url: "https://www.youtube.com/embed/MhcMk8xdZXE",
+    info: "See how space weather impacts agriculture, and learn how farmers adapt using a blend of technology and tradition.",
+    quiz: "quiz.html?quiz=1"
+  },
+  "2": {
+    title: "🚀 Lina's story",
+    desc: "Explore the beauty of auroras.",
+    url: "https://www.youtube.com/embed/fMWVTtXb544",
+    info: "Explore the beauty of auroras, understand space weather in simple terms, and see how curiosity sparks the scientists of tomorrow.",
+    quiz: "quiz.html?quiz=2"
+  },
+  "3": {
+    title: "🌍 Chen's story",
+    desc: "Discover how solar storms affect astronauts in space.",
+    url: "https://www.youtube.com/embed/QZrSt1GRuZQ",
+    info: "Discover how solar storms affect astronauts in space, how space weather is monitored, and the safety measures that protect life aboard the International Space Station.",
+    quiz: "quiz.html?quiz=3"
+  },
+  "4": {
+    title: "🪐 Sam's story",
+    desc: "How Space Weather Impacts Power Grids.",
+    url: "https://www.youtube.com/embed/MWvtCAhr4iQ",
+    info: "How Space Weather Impacts Power Grids and How Engineers Respond",
+    quiz: "quiz.html?quiz=4"
+  },
+  "5": {
+    title: "🌠 Nova's story",
+    desc: " Discover how solar storms can disrupt aviation systems.",
+    url: "https://www.youtube.com/embed/PdflsdMotgI",
+    info: "✈️🌌 Discover how solar storms can disrupt aviation systems and how pilots navigate through these challenges to ensure passenger safety.",
+    quiz: "quiz.html?quiz=5"
+  }
+};
+      // قراءة ID من الرابط
+      const params = new URLSearchParams(window.location.search);
+      const vidId = params.get("video");
+      const video = videos[vidId] || videos["1"];
+
+      // تحديث الصفحة
+      document.getElementById("videoTitle").textContent = video.title;
+      document.getElementById("videoDesc").textContent = video.desc;
+      document.getElementById("videoFrame").src = video.url;
+      document.getElementById("videoInfo").textContent = video.info;
+      document.getElementById("quizBtn").href = video.quiz;
+    });
+  </script>
+</body>
+</html>
