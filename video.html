@@ -31,7 +31,6 @@
       position: relative;
     }
 
-    /* النجوم */
     .stars-container {
       position: fixed;
       top: 0;
@@ -71,7 +70,6 @@
       50% { opacity: 1; }
     }
 
-    /* اللوجو */
     .logo {
       width: 150px;
       position: fixed;
@@ -82,7 +80,6 @@
       .logo.left { left: 20px; top: 15px;}
       .logo.right { right: 20px;top: 25px; }
 
-    /* الكونتينر */
     .container {
       max-width: 1200px;
       margin: 0 auto;
@@ -107,7 +104,6 @@
       max-width: 700px;
     }
 
-    /* الفيديو */
     .video-wrapper {
       background: rgba(255, 255, 255, .1);
       border-radius: 25px;
@@ -136,7 +132,6 @@
       border: none;
     }
 
-    /* معلومات الفيديو */
     .info-section {
       background: rgba(255, 255, 255, .1);
       border-radius: 25px;
@@ -163,10 +158,9 @@
       margin: 0 auto;
     }
 
-    /* الأزرار */
     .quiz-btn-container {
       display: flex;
-      justify-content: center; /* الزرين في النص */
+      justify-content: center; 
       gap: 20px;
       margin-top: 40px;
     }
@@ -192,28 +186,23 @@
   </style>
 </head>
 <body>
-  <!-- خلفية النجوم -->
   <div class="stars-container" id="starsContainer"></div>
 
-  <!-- اللوجوهات -->
   <img src="assets/echoes_of_space.png" class="logo left" />
   <img src="assets/nasa.png" class="logo right" />
 
-  <!-- المحتوى -->
   <div class="container">
     <h1 id="videoTitle">🎬 Video Title Here</h1>
     <p class="video-description" id="videoDesc">
       Watch this amazing video and learn something new!
     </p>
 
-    <!-- الفيديو -->
     <div class="video-wrapper">
       <div class="video-container">
         <iframe id="videoFrame" src="" allowfullscreen></iframe>
       </div>
     </div>
 
-    <!-- معلومات الفيديو -->
     <div class="info-section">
       <h2>📚 What You'll Learn</h2>
       <p id="videoInfo">
@@ -221,7 +210,6 @@
       </p>
     </div>
 
-    <!-- الأزرار جنب بعض -->
     <div class="quiz-btn-container">
       <a href="home.html" class="quiz-btn">← Back to Home</a>
       <a id="quizBtn" href="quiz.html" class="quiz-btn">Take the Quiz! 🎯</a>
@@ -229,7 +217,6 @@
   </div>
 
   <script>
-    // النجوم
     document.addEventListener("DOMContentLoaded", () => {
       const starsContainer = document.getElementById("starsContainer");
       for (let i = 0; i < 200; i++) {
@@ -278,12 +265,10 @@
     quiz: "quiz.html?quiz=5"
   }
 };
-      // قراءة ID من الرابط
       const params = new URLSearchParams(window.location.search);
       const vidId = params.get("video");
       const video = videos[vidId] || videos["1"];
 
-      // تحديث الصفحة
       document.getElementById("videoTitle").textContent = video.title;
       document.getElementById("videoDesc").textContent = video.desc;
       document.getElementById("videoFrame").src = video.url;

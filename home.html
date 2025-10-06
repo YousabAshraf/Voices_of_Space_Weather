@@ -32,7 +32,6 @@
       overflow-x: hidden;
     }
     
-    /* خلفية الفيديو */
     .video-background {
       position: fixed;
       top: 0;
@@ -55,7 +54,6 @@
       object-fit: cover;
     }
     
-    /* طبقة تظليل فوق الفيديو */
     .video-overlay {
       position: fixed;
       top: 0;
@@ -66,7 +64,6 @@
       z-index: -1;
     }
     
-    /* تأثير النجوم في الخلفية */
     .stars-container {
       position: fixed;
       top: 0;
@@ -83,7 +80,6 @@
       border-radius: 50%;
     }
     
-    /* أنواع النجوم المختلفة */
     .star.small {
       width: 1px;
       height: 1px;
@@ -108,7 +104,6 @@
       animation: twinkle-xlarge 7s infinite;
     }
     
-    /* نجوم متحركة (شهب) */
     .shooting-star {
       position: absolute;
       width: 100px;
@@ -157,7 +152,6 @@
       }
     }
     
-    /* الشعارات */
     .logo {
       width: 170px;
       position: fixed;
@@ -167,7 +161,6 @@
     .logo.left { left: 20px; top: 15px;}
     .logo.right { right: 20px;top: 25px; }
     
-    /* شريط التنقل */
     nav {
       margin-top: 120px;
       padding: 0 20px;
@@ -211,7 +204,6 @@
       left: 100%;
     }
     
-    /* المحتوى الرئيسي */
     main {
       margin-top: 40px;
       padding: 20px;
@@ -251,7 +243,6 @@
       text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     }
     
-    /* البطاقات */
     .cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -403,9 +394,9 @@
       animation: pulse 2s infinite;
     }
     .badge-icon {
-  width: 70px !important; /* حجم صغير */
+  width: 70px !important; 
   height: 70px !important;
-  object-fit: contain; /* يخلي الصورة تحافظ على أبعادها */
+  object-fit: contain;
   margin-left: 20px;
   vertical-align: middle;
   opacity: 0.3;
@@ -441,7 +432,6 @@
   margin-bottom: 20px;
 }
 
-/* زرار الشهادة - افتراضي (مقفول) */
 .certificate-btn {
   background: gray;
   color: white;
@@ -454,7 +444,6 @@
   opacity: 0.6;
 }
 
-/* لما يفتح (بعد 5 بادجات) */
 .certificate-btn.active {
   background: var(--accent-green);
   cursor: pointer;
@@ -474,7 +463,6 @@
       50% { transform: scale(1.1); }
     }
     
-    /* التجاوب مع الشاشات المختلفة */
     @media (max-width: 768px) {
       .logo {
         width: 120px;
@@ -515,7 +503,6 @@
   </style>
 </head>
 <body>
-  <!-- خلفية الفيديو -->
   <div class="video-background">
     <video autoplay muted loop playsinline>
       <source src="assets/background.mp4" type="video/mp4">
@@ -523,10 +510,8 @@
     </video>
   </div>
   
-  <!-- طبقة تظليل فوق الفيديو -->
   <div class="video-overlay"></div>
   
-  <!-- النجوم في الخلفية -->
   <div class="stars-container" id="starsContainer"></div>
   
   <img src="assets/echoes_of_space.png" alt="Logo" class="logo left">
@@ -542,7 +527,6 @@
     <p class="subtitle">Choose a card to watch videos and take fun quizzes! 🚀✨</p>
 
     <div class="cards">
-      <!-- Card 1 - Farmer -->
       <div class="card">
         <div class="card-img-container">
           <img src="assets/Farmer.png" alt="Farmer">
@@ -558,7 +542,6 @@
         </div>      
       </div>
 
-      <!-- Card 2 - Child -->
       <div class="card">
         <div class="card-img-container">
           <img src="assets/child.png" alt="Child">
@@ -574,7 +557,6 @@
         </div>     
       </div>
 
-      <!-- Card 3 - Astronaut -->
       <div class="card">
         <div class="card-img-container">
           <img src="assets/austront.png" alt="Astronaut">
@@ -590,7 +572,6 @@
         </div>     
       </div>
 
-      <!-- Card 4 - Engineer -->
       <div class="card">
         <div class="card-img-container">
           <img src="assets/engineer.png" alt="Engineer">
@@ -606,7 +587,6 @@
         </div>      
       </div>
 
-      <!-- Card 5 - Pilot -->
       <div class="card">
         <div class="card-img-container">
           <img src="assets/pilot.png" alt="Pilot">
@@ -631,7 +611,6 @@
         <img src="assets/badge_engineer.png" class="badge-icon" id="allBadge4">
         <img src="assets/badge_plane.png" class="badge-icon" id="allBadge5">
       </div>
-<!-- زرار الشهادة -->
 <button id="certificateBtn" class="btn certificate-btn" disabled onclick="showCertificate()">View Certificate</button>
 
           </div>
@@ -650,70 +629,56 @@ function loadScores() {
   }
 }
 document.addEventListener("DOMContentLoaded", loadScores);
-    // إضافة تأثير النجوم العشوائية في الخلفية
     document.addEventListener('DOMContentLoaded', function() {
       const starsContainer = document.getElementById('starsContainer');
       const starCount = 300;
       
-      // إضافة النجوم الثابتة
       for (let i = 0; i < starCount; i++) {
         const star = document.createElement('div');
         
-        // أنواع مختلفة من النجوم
         const starTypes = ['small', 'medium', 'large', 'xlarge'];
         const randomType = starTypes[Math.floor(Math.random() * starTypes.length)];
         star.classList.add('star', randomType);
         
-        // موقع عشوائي
         star.style.left = `${Math.random() * 100}vw`;
         star.style.top = `${Math.random() * 100}vh`;
         
-        // تأخير عشوائي للوميض
         star.style.animationDelay = `${Math.random() * 7}s`;
         
         starsContainer.appendChild(star);
       }
       
-      // إضافة الشهب
       const shootingStarCount = 5;
       for (let i = 0; i < shootingStarCount; i++) {
         const shootingStar = document.createElement('div');
         shootingStar.classList.add('shooting-star');
         
-        // موقع عشوائي
         shootingStar.style.left = `${Math.random() * 100}vw`;
         shootingStar.style.top = `${Math.random() * 100}vh`;
         
-        // تأخير عشوائي للحركة
         shootingStar.style.animationDelay = `${Math.random() * 10}s`;
         
         starsContainer.appendChild(shootingStar);
       }
       
-      // إضافة بعض النجوم الكبيرة اللامعة
       const brightStarsCount = 15;
       for (let i = 0; i < brightStarsCount; i++) {
         const brightStar = document.createElement('div');
         brightStar.classList.add('star', 'xlarge');
         
-        // جعلها أكثر لمعاناً
         brightStar.style.boxShadow = '0 0 10px 2px white';
         
-        // موقع عشوائي
         brightStar.style.left = `${Math.random() * 100}vw`;
         brightStar.style.top = `${Math.random() * 100}vh`;
         
-        // تأخير عشوائي للوميض
         brightStar.style.animationDelay = `${Math.random() * 5}s`;
         
         starsContainer.appendChild(brightStar);
       }
 
-      // تحميل وعرض الدرجات المحفوظة
       loadScores();
     });
 
-    // دالة لتخزين رقم الكويز الحالي
     function loadScores() {
   let totalBadges = 0;
   for (let i = 1; i <= 5; i++) {
@@ -741,7 +706,6 @@ document.addEventListener("DOMContentLoaded", loadScores);
     }
   }
 
-  // ✅ لو جاب 5 بادجات يفتح الزرار
   const certBtn = document.getElementById("certificateBtn");
   if (totalBadges === 5) {
     certBtn.classList.add("active");
@@ -752,16 +716,14 @@ document.addEventListener("DOMContentLoaded", loadScores);
   }
 }
 
-// زرار الشهادة
 function showCertificate() {
   const certBtn = document.getElementById("certificateBtn");
   if (!certBtn.disabled) {
-    window.location.href = "certificate.html"; // ✅ يفتح صفحة الشهادة
+    window.location.href = "certificate.html";
   }
 }
 
 
-    // // دالة لمسح جميع الدرجات (يمكن استخدامها لإعادة البدء)
     // function resetAllScores() {
     //   for (let i = 1; i <= 5; i++) {
     //     localStorage.removeItem(`quiz${i}_score`);
@@ -771,7 +733,6 @@ function showCertificate() {
       
     // }
 
-    // // إضافة زر إعادة التعيين (يمكن إزالته في الإصدار النهائي)
     // document.addEventListener('DOMContentLoaded', function() {
     //   const resetButton = document.createElement('button');
     //   resetButton.textContent = 'Reset All Scores';

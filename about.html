@@ -32,7 +32,6 @@
       overflow-x: hidden;
     }
     
-    /* خلفية الفيديو */
     .video-background {
       position: fixed;
       top: 0;
@@ -55,7 +54,6 @@
       object-fit: cover;
     }
     
-    /* طبقة تظليل فوق الفيديو */
     .video-overlay {
       position: fixed;
       top: 0;
@@ -66,7 +64,6 @@
       z-index: -2;
     }
     
-    /* تأثير النجوم في الخلفية */
     .stars-container {
       position: fixed;
       top: 0;
@@ -83,7 +80,6 @@
       border-radius: 50%;
     }
     
-    /* أنواع النجوم المختلفة */
     .star.small {
       width: 1px;
       height: 1px;
@@ -108,7 +104,6 @@
       animation: twinkle-xlarge 7s infinite;
     }
     
-    /* نجوم متحركة (شهب) */
     .shooting-star {
       position: absolute;
       width: 100px;
@@ -157,7 +152,6 @@
       }
     }
     
-    /* الشعارات */
     .logo {
       width: 170px;
       position: fixed;
@@ -167,7 +161,6 @@
     .logo.left { left: 20px; top: 15px;}
     .logo.right { right: 20px;top: 25px; }
     
-    /* شريط التنقل */
     nav {
       margin-top: 120px;
       padding: 0 20px;
@@ -211,7 +204,6 @@
       left: 100%;
     }
     
-    /* المحتوى */
     main {
       margin-top: 60px;
       padding: 20px;
@@ -251,7 +243,6 @@
       text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     }
     
-    /* كروت الفريق */
     .team {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -395,7 +386,6 @@
   </style>
 </head>
 <body>
-  <!-- خلفية الفيديو -->
   <div class="video-background">
     <video autoplay muted loop playsinline>
       <source src="assets/background.mp4" type="video/mp4">
@@ -403,10 +393,8 @@
     </video>
   </div>
   
-  <!-- طبقة تظليل فوق الفيديو -->
   <div class="video-overlay"></div>
   
-  <!-- النجوم في الخلفية -->
   <div class="stars-container" id="starsContainer"></div>
   
   <img src="assets/echoes_of_space.png" alt="Logo" class="logo left">
@@ -452,60 +440,48 @@
   </main>
 
   <script>
-    // إضافة تأثير النجوم العشوائية في الخلفية
     document.addEventListener('DOMContentLoaded', function() {
       const starsContainer = document.getElementById('starsContainer');
       const starCount = 300;
       
-      // إضافة النجوم الثابتة
       for (let i = 0; i < starCount; i++) {
         const star = document.createElement('div');
         
-        // أنواع مختلفة من النجوم
         const starTypes = ['small', 'medium', 'large', 'xlarge'];
         const randomType = starTypes[Math.floor(Math.random() * starTypes.length)];
         star.classList.add('star', randomType);
         
-        // موقع عشوائي
         star.style.left = `${Math.random() * 100}vw`;
         star.style.top = `${Math.random() * 100}vh`;
         
-        // تأخير عشوائي للوميض
         star.style.animationDelay = `${Math.random() * 7}s`;
         
         starsContainer.appendChild(star);
       }
       
-      // إضافة الشهب
       const shootingStarCount = 5;
       for (let i = 0; i < shootingStarCount; i++) {
         const shootingStar = document.createElement('div');
         shootingStar.classList.add('shooting-star');
         
-        // موقع عشوائي
         shootingStar.style.left = `${Math.random() * 100}vw`;
         shootingStar.style.top = `${Math.random() * 100}vh`;
         
-        // تأخير عشوائي للحركة
         shootingStar.style.animationDelay = `${Math.random() * 10}s`;
         
         starsContainer.appendChild(shootingStar);
       }
       
-      // إضافة بعض النجوم الكبيرة اللامعة
       const brightStarsCount = 15;
       for (let i = 0; i < brightStarsCount; i++) {
         const brightStar = document.createElement('div');
         brightStar.classList.add('star', 'xlarge');
         
-        // جعلها أكثر لمعاناً
         brightStar.style.boxShadow = '0 0 10px 2px white';
         
-        // موقع عشوائي
         brightStar.style.left = `${Math.random() * 100}vw`;
         brightStar.style.top = `${Math.random() * 100}vh`;
         
-        // تأخير عشوائي للوميض
         brightStar.style.animationDelay = `${Math.random() * 5}s`;
         
         starsContainer.appendChild(brightStar);
