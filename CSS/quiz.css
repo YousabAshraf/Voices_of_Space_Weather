@@ -1,0 +1,56 @@
+:root {
+  --space-blue: #0b0f2e;
+  --space-purple: #1a1f4b;
+  --accent-orange: #ff7b25;
+  --accent-yellow: #ffcc00;
+  --accent-blue: #2196f3;
+  --accent-green: #4CAF50;
+  --accent-red: #f44336;
+  --text-light: #ffffff;
+  --text-gray: #b0b0b0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: "Comic Sans MS", sans-serif; background: linear-gradient(135deg, var(--space-blue), var(--space-purple)); color: var(--text-light); min-height: 100vh; overflow-x: hidden; position: relative; }
+.stars-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; overflow: hidden; }
+.star { position: absolute; background: #fff; border-radius: 50%; }
+.star.small { width: 1px; height: 1px; animation: twinkle 4s infinite; }
+.star.medium { width: 2px; height: 2px; animation: twinkle 5s infinite; }
+.star.large { width: 3px; height: 3px; animation: twinkle 6s infinite; }
+@keyframes twinkle { 0%, 100% { opacity: .3; } 50% { opacity: 1; } }
+
+.logo { width: 150px; position: fixed; filter: drop-shadow(0 0 8px rgba(255,255,255,.5)); z-index: 100; }
+.logo.left { left: 20px; top: 15px;} .logo.right { right: 20px;top: 25px; }
+
+.container { max-width: 800px; margin: 0 auto; padding: 140px 20px 40px; position: relative; z-index: 10; }
+h1 { text-align: center; color: var(--accent-yellow); font-size: 2.5em; margin-bottom: 15px; text-shadow: 0 0 10px rgba(255,204,0,.5); }
+.quiz-description { text-align: center; font-size: 1.2em; color: var(--text-gray); margin: 0 auto 40px; max-width: 600px; }
+
+.progress-container { background: rgba(255,255,255,.1); border-radius: 20px; padding: 15px; margin-bottom: 30px; backdrop-filter: blur(10px); border: 2px solid var(--accent-blue); }
+.progress-bar { width: 100%; height: 12px; background: rgba(255,255,255,.2); border-radius: 10px; overflow: hidden; }
+.progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent-orange), var(--accent-yellow)); border-radius: 10px; transition: width 0.5s ease; width: 0%; }
+.progress-text { text-align: center; margin-top: 10px; font-size: 1em; color: var(--text-light); }
+
+.question-container { background: rgba(255,255,255,.1); border-radius: 25px; padding: 30px; backdrop-filter: blur(10px); box-shadow: 0 10px 30px rgba(0,0,0,.3); border: 2px solid var(--accent-yellow); margin-bottom: 25px; }
+.question-number { color: var(--accent-yellow); font-size: 1.1em; margin-bottom: 10px; }
+.question-text { font-size: 1.3em; margin-bottom: 25px; line-height: 1.5; }
+
+.options-container { display: flex; flex-direction: column; gap: 12px; }
+.option { background: rgba(255,255,255,.1); border: 2px solid transparent; border-radius: 15px; padding: 18px 20px; cursor: pointer; transition: all 0.3s ease; font-size: 1.1em; display: flex; align-items: center; gap: 15px; }
+.option:hover { background: rgba(255,255,255,.2); transform: translateY(-2px); }
+.option.selected { border-color: var(--accent-blue); background: rgba(33,150,243,0.2); }
+.option.correct { border-color: var(--accent-green); background: rgba(76,175,80,0.2); }
+.option.incorrect { border-color: var(--accent-red); background: rgba(244,67,54,0.2); }
+.option-letter { width: 35px; height: 35px; border-radius: 50%; background: var(--accent-blue); display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; }
+
+.buttons-container { display: flex; justify-content: space-between; margin-top: 30px; gap: 20px; }
+.nav-btn { padding: 15px 30px; background: var(--accent-orange); color: #fff; border: none; border-radius: 25px; font-weight: bold; font-size: 1.1em; cursor: pointer; transition: .3s; flex: 1; }
+.nav-btn:hover { background: #e65c00; transform: scale(1.05); }
+.nav-btn:disabled { background: #666; cursor: not-allowed; transform: none; }
+.nav-btn.secondary { background: var(--accent-blue); }
+.nav-btn.secondary:hover { background: #1976d2; }
+
+.result-container { text-align: center; background: rgba(255,255,255,.1); border-radius: 25px; padding: 40px; backdrop-filter: blur(10px); border: 2px solid var(--accent-green); margin-top: 30px; display: none; }
+.result-title { color: var(--accent-yellow); font-size: 2em; margin-bottom: 20px; }
+.score { font-size: 3em; font-weight: bold; color: var(--accent-green); margin: 20px 0; }
+.result-message { font-size: 1.2em; line-height: 1.6; margin-bottom: 30px; }
