@@ -5,7 +5,7 @@
 
 <p align="center">
   <img src="assets/echoes_of_space.png" width="60" alt="Team Logo" style="vertical-align: middle;">
-  <span style="vertical-align: middle;">Developed by <strong>Team Echoes of Space</strong></span>
+  <span style="vertical-align: up;">Developed by <strong>Team Echoes of Space</strong></span>
 </p>
 
 ## 📖 Project Overview
