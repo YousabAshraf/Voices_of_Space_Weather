@@ -2,7 +2,7 @@
 # 🚀 Voices of Space Weather
 
 <p align="right">
-  <img src="assets/echoes_of_space.png" width="60" alt="Team Logo">  
+  <img src="assets/echoes_of_space.png" width="30" alt="Team Logo">  
   Developed by **Team Echoes of Space**
 </p>
 
