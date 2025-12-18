@@ -1,4 +1,4 @@
-#### 🌌 Voices of Space Weather
+ 🌌 Voices of Space Weather
 
 ## 📖 Project Overview
 
