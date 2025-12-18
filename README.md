@@ -3,11 +3,6 @@
 
 > **Bridging abstract space science and everyday life through interactive storytelling.**
 
-<p align="center">
-  <img src="assets/echoes_of_space.png" width="60" alt="Team Logo" style="vertical-align: middle;">
-  <span style="vertical-align: up;">Developed by <strong>Team Echoes of Space</strong></span>
-</p>
-
 ## 📖 Project Overview
 
 **Voices of Space Weather** is an interactive, web-based educational platform designed for children aged **8–12 years**. The project transforms complex space weather and solar science concepts into engaging, character-driven stories that show how space weather impacts everyday life.
