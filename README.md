@@ -1,7 +1,4 @@
 # 🌌 Voices of Space Weather
-<p align="center">
-  <img src="assets/echoes_of_space.png" width="150" alt="Voices of Space Weather Team Logo">
-</p>
 
 ## 📖 Project Overview
 
