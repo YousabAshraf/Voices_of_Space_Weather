@@ -1,7 +1,11 @@
+<<<<<<< HEAD
 
 # 🚀 Voices of Space Weather
 
 > **Bridging abstract space science and everyday life through interactive storytelling.**
+=======
+# 🌌 Voices of Space Weather
+>>>>>>> parent of 0c48915 (Enhance README with project overview and logo)
 
 ## 📖 Project Overview
 
