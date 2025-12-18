@@ -1,9 +1,12 @@
 
 # 🚀 Voices of Space Weather
 
-> **Bridging abstract space science and everyday life through interactive storytelling.**
+<p align="right">
+  <img src="echoes_of_space.png" width="60" alt="Team Logo">  
+  Developed by **Team Echoes of Space**
+</p>
 
-![Project Banner](assets/echoes_of_space.png)
+> **Bridging abstract space science and everyday life through interactive storytelling.**
 
 ## 📖 Project Overview
 
