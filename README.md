@@ -177,10 +177,12 @@ AI tools were used **ethically and transparently** to enhance productivity — n
 
 ## 📜 Compliance Statement
 
-* No NASA logos or official branding used
-* All AI-generated content clearly labeled
-* No AI-generated audio included
-* Full human oversight maintained at all stages
+* The official NASA logo is displayed on this website for educational purposes only as part of participation in the 2025 NASA Space Apps Challenge.
+* The use of the NASA logo does not imply any official endorsement, sponsorship, or partnership by NASA for this project.
+* The project complies with the NASA and NASA Space Apps Challenge logo usage guidelines.
+* All AI-generated content is clearly documented and labeled.
+* No AI-generated audio was used in this project.
+* All final creative, educational, and technical decisions were made under full human supervision.
 
 ---
 
